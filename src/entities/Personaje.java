@@ -36,7 +36,7 @@ public class Personaje {
 	public String getIdPersonaje() {
 		return idPersonaje;
 	}
-	public void setCodigoPersonaje(String codigoPersonaje) {
+	public void setIdPersonaje(String codigoPersonaje) {
 		this.idPersonaje = codigoPersonaje;
 	}
 	public String getNombre() {
@@ -45,28 +45,28 @@ public class Personaje {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public int getPuntosVida() {
+	public int getVida() {
 		return vida;
 	}
-	public void setPuntosVida(int puntosVida) {
+	public void setVida(int puntosVida) {
 		this.vida = puntosVida;
 	}
-	public int getPuntosEnergia() {
+	public int getEnergia() {
 		return energia;
 	}
-	public void setPuntosEnergia(int puntosEnergia) {
+	public void setEnergia(int puntosEnergia) {
 		this.energia = puntosEnergia;
 	}
-	public int getPuntosDefensa() {
+	public int getDefensa() {
 		return defensa;
 	}
-	public void setPuntosDefensa(int puntosDefensa) {
+	public void setDefensa(int puntosDefensa) {
 		this.defensa = puntosDefensa;
 	}
-	public int getPuntosEvasion() {
+	public int getEvasion() {
 		return evasion;
 	}
-	public void setPuntosEvasion(int puntosEvasion) {
+	public void setEvasion(int puntosEvasion) {
 		this.evasion = puntosEvasion;
 	}
 	public int getPuntosTotales() {
@@ -78,11 +78,11 @@ public class Personaje {
 	public int getconsumoEnergia() {
 		return consumoEnergia;
 	}
-	public void setConsumoEnergia(int puntosSinAsignar) {
+	public void setConsumoEnergia(int consumoEnergia) {
 		this.consumoEnergia = consumoEnergia;
 	}
 	
-public int getDanio() {
+	public int getDanio() {
 		return danio;
 	}
 

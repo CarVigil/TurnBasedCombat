@@ -2,7 +2,6 @@ package data;
 
 import java.sql.*;
 
-import util.ApplicationException;
 
 public class ConnectionFactory {
 
