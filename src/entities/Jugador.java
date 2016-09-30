@@ -1,6 +1,6 @@
 package entities;
 
-public class jugador {
+public class Jugador {
 	
 	String nombre;
 	String apellido;
@@ -21,10 +21,10 @@ public class jugador {
 
 // Constructores
 	
-public jugador(){
+public Jugador(){
 
 }
-public jugador(String nom, String ape){
+public Jugador(String nom, String ape){
 	setNombre(nom);
 	setApellido(ape);
 }

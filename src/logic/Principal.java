@@ -1,10 +1,12 @@
 package logic;
+import entities.*;
 
 public class Principal {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	
+	public void nuevaPartida(Jugador j1, Jugador j2){
+		
 	}
+
+
 
 }
