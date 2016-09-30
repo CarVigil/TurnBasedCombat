@@ -38,13 +38,15 @@ Ataque:
 
 Durante su turno un jugador puedo optar por atacar al oponente, el jugador debe ingresar la cantidad de puntos de energía que se utilizarán en el ataque. Los mismos deberán restarse de su personaje (no podrá exceder los que tiene) en cualquier caso.
 Durante el ataque se evaluará primero la probabilidad de evasión del personaje atacado(ver abajo), si el personaje evade el ataque no recibirá daño alguno. Si en cambio el ataque no es evadido se restarán los puntos de energía utilizados en el ataque de la vida del atacado.
-Defensa:
 
+Defensa:
 Los puntos de defensa no podrán exceder los 20 puntos.
 Si el jugador opta por defender no podrá atacar en dicho turno, pero a cambio de ello el personaje recuperará un porcentaje de la energía y de la vida que tenía al comenzar el juego. Calculado de la siguiente forma:
 energiaARecupearar = energiaOriginal * defensa / 100
 vidaARecuperar = vidaOriginal * defensa / 250
 Los puntos de vida o energia recueperados se sumaran pero no podrán superar los valores originales del comienzo de la partida.
+
+
 Evasión: Al crear el jugador se podrán asignar puntos de evasión. Siendo el máximo 80 puntos. Cuando el personaje recibe un ataque se calculará si puede evadir el ataque con un número aleatorio si se cumple la condición (numAleatorio*100)>puntosDeEvasion. En caso de evadir el ataque el personaje atacado no recibe daño, pero el atacante igualmente pierde los puntos de energía utilizados.
 
 Ganador: El ganador será quien quite todos los puntos de vida del oponente primero. Al finalizar el combate el ganador recibirá como premio 10 puntos para su personaje que se sumarán a los puntos totales que ya tenía para así poder asignarlos luego en la modificación del personaje.
