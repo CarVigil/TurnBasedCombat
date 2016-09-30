@@ -5,28 +5,30 @@ public class Personaje {
 
 	private String idPersonaje;
 	private String nombre;
-	private int puntosVida;
-	private int puntosEnergia;
-	private int puntosDefensa;
-	private int puntosEvasion;
+	private int vida;
+	private int energia;
+	private int defensa;
+	private int evasion;
 	private int puntosTotales;
-	private int puntosSinAsignar;
-	
-	
+	private int consumoEnergia;
+	private int danio;
+
+
+	/*	
 	public Personaje(String idPersonaje, String nombre, int puntosVida,
 			int puntosEnergia, int puntosDefensa, int puntosEvasion,
-			int puntosTotales, int puntosSinAsignar) {
+			int puntosTotales, int consumoEnergia) {
 		super();
 		this.idPersonaje = idPersonaje;
 		this.nombre = nombre;
-		this.puntosVida = puntosVida;
-		this.puntosEnergia = puntosEnergia;
-		this.puntosDefensa = puntosDefensa;
-		this.puntosEvasion = puntosEvasion;
+		this.vida = puntosVida;
+		this.energia = puntosEnergia;
+		this.defensa = puntosDefensa;
+		this.evasion = puntosEvasion;
 		this.puntosTotales = puntosTotales;
-		this.puntosSinAsignar = puntosSinAsignar;
+		this.consumoEnergia= consumoEnergia;
 	}
-	
+*/	
 	public Personaje() {
 		super();
 	}
@@ -44,28 +46,28 @@ public class Personaje {
 		this.nombre = nombre;
 	}
 	public int getPuntosVida() {
-		return puntosVida;
+		return vida;
 	}
 	public void setPuntosVida(int puntosVida) {
-		this.puntosVida = puntosVida;
+		this.vida = puntosVida;
 	}
 	public int getPuntosEnergia() {
-		return puntosEnergia;
+		return energia;
 	}
 	public void setPuntosEnergia(int puntosEnergia) {
-		this.puntosEnergia = puntosEnergia;
+		this.energia = puntosEnergia;
 	}
 	public int getPuntosDefensa() {
-		return puntosDefensa;
+		return defensa;
 	}
 	public void setPuntosDefensa(int puntosDefensa) {
-		this.puntosDefensa = puntosDefensa;
+		this.defensa = puntosDefensa;
 	}
 	public int getPuntosEvasion() {
-		return puntosEvasion;
+		return evasion;
 	}
 	public void setPuntosEvasion(int puntosEvasion) {
-		this.puntosEvasion = puntosEvasion;
+		this.evasion = puntosEvasion;
 	}
 	public int getPuntosTotales() {
 		return puntosTotales;
@@ -73,13 +75,20 @@ public class Personaje {
 	public void setPuntosTotales(int puntosTotales) {
 		this.puntosTotales = puntosTotales;
 	}
-	public int getPuntosSinAsignar() {
-		return puntosSinAsignar;
+	public int getconsumoEnergia() {
+		return consumoEnergia;
 	}
-	public void setPuntosSinAsignar(int puntosSinAsignar) {
-		this.puntosSinAsignar = puntosSinAsignar;
+	public void setConsumoEnergia(int puntosSinAsignar) {
+		this.consumoEnergia = consumoEnergia;
 	}
 	
+public int getDanio() {
+		return danio;
+	}
+
+	public void setDanio(int danio) {
+		this.danio = danio;
+	}
 	
 	public void CargarPersonaje()
 	{
@@ -87,10 +96,10 @@ public class Personaje {
 		{
 			Personaje personajeActual = new Personaje();
 			personajeActual.puntosTotales = 200;
-			int ptVida = personajeActual.puntosVida;
-			int ptEnergia = personajeActual.puntosEnergia;
-			int ptDefensa =  personajeActual.puntosDefensa;
-			int ptEvasion = personajeActual.puntosEvasion;
+			int ptVida = personajeActual.vida;
+			int ptEnergia = personajeActual.energia;
+			int ptDefensa =  personajeActual.defensa;
+			int ptEvasion = personajeActual.evasion;
 			personajeActual.CargarPuntos(ptVida, ptEnergia, ptDefensa, ptEvasion);
 		}
 		catch (Exception e)
@@ -104,20 +113,30 @@ public class Personaje {
 		
 	}
 	
-	public boolean Atacar(int puntosAtaque, Personaje PersActual)
+	public boolean Atacar(int energiaAtaque)
 	{
 		boolean rta;
-		if (puntosAtaque > PersActual.puntosEnergia)
+		if (energiaAtaque >= this.energia)
 		{
-			PersActual.puntosEnergia -= puntosAtaque;
+			this.energia -= energiaAtaque;
 			rta = true;
 		}
-		else {
+		else 
+		{
 			rta = false;
 		}
 		return rta;		
 	}
 	
+	public void recibirAtaque(int energia){
+		
+	}
+	
+	public void defensa(){
+		
+	}
+	
+/*
 	public void Evadir()
 	{
 		
@@ -130,5 +149,6 @@ public class Personaje {
 			persActual.puntosEnergia += energiaARecuperar;
 		}
 	}
+*/
 	
 }
