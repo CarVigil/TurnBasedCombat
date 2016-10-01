@@ -116,7 +116,7 @@ public class DataPersonaje {
 	
 //Buscar personaje por codigo
 	
-	public Personaje getByCod(Personaje per) throws ApplicationException {
+	public Personaje getById(Personaje per) throws ApplicationException {
 		Personaje p = null;
 
 		PreparedStatement stmt = null;
