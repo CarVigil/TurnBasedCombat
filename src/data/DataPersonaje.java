@@ -1,9 +1,8 @@
 package data;
 
 import java.sql.*;
-
 import util.ApplicationException;
-import business.entities.Personaje;
+import entities.Personaje;
 
 public class DataPersonaje {
 
@@ -11,12 +10,14 @@ public class DataPersonaje {
 		
 	}
 
+//Agregar un nuevo personaje
+	
 	public void add(Personaje per) throws ApplicationException {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
 		try {
-			stmt = ConnectionFactory.getInstance().getConn().prepareStatement(
+			stmt = FactoryConnection.getInstance().getConn().prepareStatement(
 					"insert into personajes (nombre,vida,energia,defensa,evasion,puntos_totales) " +
 					"values (?,?,?,?,?,?)",PreparedStatement.RETURN_GENERATED_KEYS);
 			// PreparedStatement.RETURN_GENERATED_KEYS to be able to retrieve id generated on the db
@@ -33,7 +34,7 @@ public class DataPersonaje {
 			//after executing the insert use the following lines to retrieve the id
 			rs = stmt.getGeneratedKeys();
 			if (rs != null && rs.next()) {
-				per.setCodPersonaje(rs.getInt(1));
+				per.setIdPersonaje(rs.getInt(1));
 			}
 		} catch (SQLException e) {
 			throw new ApplicationException("Error", e);
@@ -41,18 +42,20 @@ public class DataPersonaje {
 			try {
 				if (rs != null) rs.close();
 				if (stmt != null) stmt.close();
-				ConnectionFactory.getInstance().releaseConn();
+				FactoryConnection.getInstance().releaseConn();
 			} catch (SQLException e) {
 				throw new ApplicationException("Error ", e);
 			}
 		}
 	}
 
+//Modificar Personaje	
+
 	public void update(Personaje per) throws ApplicationException {
 		PreparedStatement stmt = null;
 
 		try {
-			stmt = ConnectionFactory.getInstance().getConn().prepareStatement(
+			stmt = FactoryConnection.getInstance().getConn().prepareStatement(
 					"update personajes set nombre = ?, vida = ?, energia = ?," +
 					"defensa = ?, evasion = ?, puntos_totales = ? " +
 					"where id = ?");
@@ -66,27 +69,29 @@ public class DataPersonaje {
 			stmt.execute();
 		} catch (SQLException e) {
 			throw new ApplicationException("Error actualizando personaje", e);
-		} catch (ApplicationException e) {
-			// TODO Auto-generated catch block
+		} catch (ApplicationException e) {			
 			throw new ApplicationException("Error actualizando personaje", e);
 		}
 		finally {
 			try {
 				if (stmt != null) stmt.close();
-				ConnectionFactory.getInstance().releaseConn();
+				FactoryConnection.getInstance().releaseConn();
 			} catch (SQLException e) {
 				throw new ApplicationException("Error cerrando", e);
 			}
 		}
 	}
 
+	
+// Borrar personaje
+	
 	public void delete(Personaje per) throws ApplicationException {
 		PreparedStatement stmt = null;
 
 		try {
-			stmt = ConnectionFactory.getInstance().getConn().prepareStatement(
+			stmt = FactoryConnection.getInstance().getConn().prepareStatement(
 					"delete from personajes where id = ?");
-			stmt.setInt(1, per.getCodPersonaje());
+			stmt.setInt(1, per.getIdPersonaje());
 			int rowCount = stmt.executeUpdate();
 			if (rowCount == 0) {
 				throw new ApplicationException("no existe el personaje");
@@ -100,7 +105,7 @@ public class DataPersonaje {
 		finally {
 			try {
 				if (stmt != null) stmt.close();
-				ConnectionFactory.getInstance().releaseConn();
+				FactoryConnection.getInstance().releaseConn();
 			} catch (SQLException e) {
 				//TODO Auto-generated catch block
 				throw new ApplicationException("Error cerrando", e);
@@ -108,19 +113,22 @@ public class DataPersonaje {
 		}
 	}
 
+	
+//Buscar personaje por codigo
+	
 	public Personaje getByCod(Personaje per) throws ApplicationException {
 		Personaje p = null;
 
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-			stmt = ConnectionFactory.getInstance().getConn().prepareStatement(
+			stmt = FactoryConnection.getInstance().getConn().prepareStatement(
 					"select id, nombre, vida, energia, defensa, evasion, puntos_totales from personajes where id = ?");
-			stmt.setInt(1, per.getCodPersonaje());
+			stmt.setInt(1, per.getIdPersonaje());
 			rs = stmt.executeQuery();
 			if (rs != null && rs.next()) {
 				p = new Personaje();
-				p.setCodPersonaje(rs.getInt("id"));
+				p.setIdPersonaje(rs.getInt("id"));
 				p.setNombre(rs.getString("nombre"));
 				p.setVida(rs.getInt("vida"));
 				p.setEnergia(rs.getInt("energia"));
@@ -136,7 +144,7 @@ public class DataPersonaje {
 			try {
 				if (rs != null) rs.close();
 				if (stmt != null) stmt.close();
-				ConnectionFactory.getInstance().releaseConn();
+				FactoryConnection.getInstance().releaseConn();
 			} catch (SQLException e) {
 				throw new ApplicationException("Error cerrando", e);
 			}

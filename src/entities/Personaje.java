@@ -3,7 +3,7 @@ package entities;
 
 public class Personaje {
 
-	private String idPersonaje;
+	private int idPersonaje;
 	private String nombre;
 	private int vida;
 	private int energia;
@@ -33,10 +33,10 @@ public class Personaje {
 		super();
 	}
 	
-	public String getIdPersonaje() {
+	public int getIdPersonaje() {
 		return idPersonaje;
 	}
-	public void setIdPersonaje(String codigoPersonaje) {
+	public void setIdPersonaje(int codigoPersonaje) {
 		this.idPersonaje = codigoPersonaje;
 	}
 	public String getNombre() {

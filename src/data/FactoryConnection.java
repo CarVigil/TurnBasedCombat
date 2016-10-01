@@ -1,9 +1,10 @@
 package data;
 
 import java.sql.*;
+import util.*;
 
 
-public class ConnectionFactory {
+public class FactoryConnection {
 
 	private String dbDriver="com.mysql.jdbc.Driver";
 	private String host="localhost";
@@ -16,7 +17,7 @@ public class ConnectionFactory {
 	private Connection conn;
 	private int cantConn = 0;
 
-	private ConnectionFactory() throws ApplicationException {
+	private FactoryConnection() throws ApplicationException {
 		try {
 			Class.forName(dbDriver);
 		} catch (ClassNotFoundException e) {
@@ -24,11 +25,11 @@ public class ConnectionFactory {
 		}
 	}
 
-	private static ConnectionFactory instance;
+	private static FactoryConnection instance;
 	
-	public static ConnectionFactory getInstance() throws ApplicationException{
+	public static FactoryConnection getInstance() throws ApplicationException{
 		if (instance==null){
-			instance = new ConnectionFactory();
+			instance = new FactoryConnection();
 		}
 		return instance;
 	}
