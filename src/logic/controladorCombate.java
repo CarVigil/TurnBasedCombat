@@ -9,10 +9,16 @@ public class controladorCombate {
 
 	Personaje pers1;
 	Personaje pers2;	
-	private Partida partidaActual;
-	
+	Random nroAleatorio = new Random();		
 	DataPersonaje dp = new DataPersonaje();
+	Partida partidaActual;
 	
+	
+	
+	public void setPartidaActual(){
+		
+		
+	}
 	public Personaje getPers1() {
 		return pers1;
 	}
@@ -25,7 +31,7 @@ public class controladorCombate {
 	public void setPers2(Personaje pers2) {
 		this.pers2 = pers2;
 	}	
-	
+		
 	public void agregarPersonaje(Personaje per) throws ApplicationException{
 		//Le paso un objeto de la clase Personaje 
 		
@@ -47,6 +53,11 @@ public class controladorCombate {
 		dp.borrar(per);
 	}
 
-	
+	public Personaje asignarPuntos(Personaje per){
+		
+		return per;
+	}
+
+
 
 }
