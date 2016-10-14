@@ -1,6 +1,7 @@
 package data;
 
 import java.sql.*;
+
 import util.ApplicationException;
 import entities.Personaje;
 
@@ -12,7 +13,7 @@ public class DataPersonaje {
 
 //Agregar un nuevo personaje
 	
-	public void add(Personaje per) throws ApplicationException {
+	public void agregar(Personaje per) throws ApplicationException {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 
@@ -51,7 +52,9 @@ public class DataPersonaje {
 
 //Modificar Personaje	
 
-	public void update(Personaje per) throws ApplicationException {
+	//Agregar un nuevo personaje
+	
+	public void modificar(Personaje per) throws ApplicationException {
 		PreparedStatement stmt = null;
 
 		try {
@@ -85,7 +88,7 @@ public class DataPersonaje {
 	
 // Borrar personaje
 	
-	public void delete(Personaje per) throws ApplicationException {
+	public void borrar(Personaje per) throws ApplicationException {
 		PreparedStatement stmt = null;
 
 		try {
@@ -116,7 +119,7 @@ public class DataPersonaje {
 	
 //Buscar personaje por codigo
 	
-	public Personaje getById(Personaje per) throws ApplicationException {
+	public Personaje buscarPorId(Personaje per) throws ApplicationException {
 		Personaje p = null;
 
 		PreparedStatement stmt = null;

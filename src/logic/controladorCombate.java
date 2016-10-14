@@ -1,8 +1,7 @@
 package logic;
+
 import entities.*;
-
 import java.util.Random;
-
 import util.ApplicationException;
 import data.DataPersonaje;
 
@@ -25,27 +24,29 @@ public class controladorCombate {
 	}
 	public void setPers2(Personaje pers2) {
 		this.pers2 = pers2;
-	}
+	}	
 	
-	
-	public void agregarPersonaje(Personaje personajeActual) throws ApplicationException{
+	public void agregarPersonaje(Personaje per) throws ApplicationException{
 		//Le paso un objeto de la clase Personaje 
 		
-		dp.add(personajeActual);		
+		dp.agregar(per);		
 	}
 	
-	public Personaje buscarPersonaje(int id) throws ApplicationException{
-		
-		Personaje per = new Personaje();
-		per.setIdPersonaje(id);
-		dp.getById(per);
+	public Personaje buscarPersonaje(Personaje per) throws ApplicationException{
+						
+		dp.buscarPorId(per);
 		return per;
 	}
 	
 	public Personaje modificarPersonaje(Personaje per)throws ApplicationException{
-		dp.update(per);
+		dp.modificar(per);
 		return per;
 	}
+	
+	public void borrarPersonaje(Personaje per) throws ApplicationException{
+		dp.borrar(per);
+	}
 
+	
 
 }

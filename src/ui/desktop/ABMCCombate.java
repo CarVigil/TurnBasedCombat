@@ -12,7 +12,8 @@ import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JTextField;
 
-import logic.controladorCombate;
+import logic.*;
+import entities.*;
 
 public class ABMCCombate extends JFrame {
 
